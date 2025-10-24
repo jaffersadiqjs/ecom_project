@@ -1,0 +1,16 @@
+<h2>GST Invoice - Order #{{ order.id }}</h2>
+<p>Name: {{ order.full_name }}</p>
+<p>Email: {{ order.email }}</p>
+<p>Phone: {{ order.phone }}</p>
+<p>Address: {{ order.address }}</p>
+<table border="1">
+<tr><th>Product</th><th>Qty</th><th>Price</th></tr>
+{% for item in order.orderitem_set.all %}
+<tr>
+<td>{{ item.product.name }}</td>
+<td>{{ item.quantity }}</td>
+<td>₹{{ item.product.price }}</td>
+</tr>
+{% endfor %}
+</table>
+<p>Total: ₹{{ order.total_amount }}</p>
